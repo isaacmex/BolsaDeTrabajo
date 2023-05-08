@@ -16,6 +16,16 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="rol" :value="__('¿Que tipo de usuario eres?')" />
+            <select name="rol" id="rol" class="block text-sm text-gray-500 font-bold uppercase mb-2 w-full">
+                <option value="">--Selecciona tu rol</option>
+                <option value="1">Estudiante - Egresado</option>
+                <option value="2">Reclutador - Empresa</option>
+            </select>
+             
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
