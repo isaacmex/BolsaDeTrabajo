@@ -86,9 +86,16 @@
             type="file"
             wire:model="imagen"
            />
-           <div class="my">
+           <div class="my-5 w-80">
             @if ($imagen)
-                Imagen:
+            <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-cyan-500">
+                <span class="text-xl inline-block mr-5 align-middle">
+                  <i class="fas fa-bell" />
+                </span>
+                <span class="inline-block align-middle mr-8">
+                  <b class="capitalize">¡Imagen! :</b>
+                </span>
+              </div>
                 <img src="{{ $imagen->temporaryUrl() }}">
             @endif
            </div>

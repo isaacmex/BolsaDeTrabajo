@@ -85,16 +85,29 @@
            id="imagen"
            class="block mt-1 w-full"
            type="file"
-           wire:model="imagen"
+           wire:model="imagen_nueva"
           />
         <div class="my-5 w-80">
             <x-input-label  :value="__('Imagen Actual')" />
             <img src="{{ asset('storage/vacantes/' . $imagen)  }}" alt="{{ 'Imagen vacante: ' .$titulo}}">
         </div>
+        <div class="my-5 w-80">
+            @if ($imagen_nueva)
+                <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-cyan-500">
+                    <span class="text-xl inline-block mr-5 align-middle">
+                      <i class="fas fa-bell"/>
+                    </span>
+                    <span class="inline-block align-middle mr-8">
+                      <b class="capitalize">¡Imagen Nueva!</b>
+                    </span>
+                  </div>
+
+                <img src="{{ $imagen_nueva->temporaryUrl() }}">
+            @endif
+           </div>
 
 
-
-          @error('imagen')
+          @error('imagen_nueva')
                    <livewire:mostrar-alerta :message="$message"/>
 
           @enderror
