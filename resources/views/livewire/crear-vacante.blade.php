@@ -10,9 +10,10 @@
             :value="old('titulo')"
             placeholder="Titulo de la vacante"
            />
-           
+
            @error('titulo')
-                    {{$message}}
+                    <livewire:mostrar-alerta :message="$message"/>
+
            @enderror
     </div>
     <div>
@@ -26,6 +27,9 @@
             :value="old('salario')"
             placeholder="Salario"
            />
+           @error('Salario')
+           <livewire:mostrar-alerta :message="$message"/>
+            @enderror
     </div>
 
     <div>
@@ -40,6 +44,9 @@
         <option value="{{$carrera->id}}">{{$carrera->carrera}}</option>
         @endforeach
         </select>
+        @error('carrera')
+                    <livewire:mostrar-alerta :message="$message"/>
+        @enderror
     </div>
 
     <div>
@@ -52,6 +59,10 @@
             :value="old('empresa')"
             placeholder="Empresa ej. Nestle, Uber , Netflix"
            />
+           @error('empresa')
+                    <livewire:mostrar-alerta :message="$message"/>
+
+           @enderror
     </div>
 
     <div>
@@ -60,6 +71,10 @@
             wire:model="descripcion"
             placeholder="Descripcion" class="block text-sm text-gray-500 font-bold uppercase mb-2 w-full h-72">
         </textarea>
+        @error('descripcion')
+                    <livewire:mostrar-alerta :message="$message"/>
+
+           @enderror
     </div>
 
 
@@ -71,6 +86,17 @@
             type="file"
             wire:model="imagen"
            />
+           <div class="my">
+            @if ($imagen)
+                Imagen:
+                <img src="{{ $imagen->temporaryUrl() }}">
+            @endif
+           </div>
+
+           @error('imagen')
+                    <livewire:mostrar-alerta :message="$message"/>
+
+           @enderror
     </div>
     <div>
 
