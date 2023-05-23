@@ -19,4 +19,12 @@ class Vacante extends Model
 
     ];
 
+    public function carrera()
+    {
+
+
+            return $this->belongsTo(Carrera::class);
+
+    }
+
 }

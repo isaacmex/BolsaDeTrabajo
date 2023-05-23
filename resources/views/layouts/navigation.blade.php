@@ -9,20 +9,27 @@
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
+                    @auth
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
-                        {{ __('Mis Vacantes') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
-                        {{ __('Crear Vacante') }}
-                    </x-nav-link>
-                </div>
+
+                        <!-- Navigation Links -->
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
+                                {{ __('Mis Vacantes') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
+                                {{ __('Crear Vacante') }}
+                            </x-nav-link>
+                        </div>
+                @endauth
+
 
             </div>
 
             <!-- Settings Dropdown -->
+                    @auth
+
+
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -55,6 +62,21 @@
                     </x-slot>
                 </x-dropdown>
             </div>
+            @endauth
+            @guest
+
+
+            <!-- Navigation Links -->
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <x-nav-link :href="route('login')" >
+                    {{ __('Iniciar Sesion') }}
+                </x-nav-link>
+                <x-nav-link :href="route('register')">
+                    {{ __('Crear Cuenta') }}
+                </x-nav-link>
+            </div>
+            @endguest
+
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
@@ -70,6 +92,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        @auth
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
                 {{ __('Mis Vacantes') }}
@@ -103,5 +126,17 @@
                 </form>
             </div>
         </div>
+        @endauth
+
+        @guest
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('login')" >
+                    {{ __('Iniciar Sesion') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('register')">
+                    {{ __('Crear una cuenta') }}
+                </x-responsive-nav-link>
+            </div>
+        @endguest
     </div>
 </nav>
