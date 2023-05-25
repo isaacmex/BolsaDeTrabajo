@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 use Livewire\WithFileUploads;
 use Livewire\Component;
 use App\Models\Vacante;
+use App\Notifications\NuevoCandidato;
 use Illuminate\Validation\validator;
 
 
@@ -31,6 +32,8 @@ class PostularVacante extends Component
             'user_id' => auth()->user()->id,
             'cv' => $datos['cv']
         ]);
+
+        $this->vacante->reclutador->notify(new NuevoCandidato($this->vacante->id, $this->vacante->titulo, auth()->user()->id));
 
         session()->flash('mensaje', 'Se envio correctamente tu informacion, ¡Exito!');
         return redirect()->back();

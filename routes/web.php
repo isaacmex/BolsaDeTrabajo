@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VacanteController;
+use App\Http\Controllers\NotificacionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,4 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//notifiaciaones
+Route::get('/notificaciones', NotificacionController::class);
 require __DIR__.'/auth.php';
