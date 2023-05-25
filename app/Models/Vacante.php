@@ -26,5 +26,14 @@ class Vacante extends Model
             return $this->belongsTo(Carrera::class);
 
     }
+/**
+ * Get all of the comments for the Vacante
+ *
+ * @return \Illuminate\Database\Eloquent\Relations\HasMany
+ */
+public function candidatos()
+{
+    return $this->hasMany(Candidato::class);
+}
 
 }
