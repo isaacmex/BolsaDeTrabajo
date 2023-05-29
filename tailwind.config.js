@@ -8,7 +8,14 @@ module.exports = {
         './resources/views/**/*.blade.php',
     ],
 
-        
+
 
     plugins: [require('@tailwindcss/forms')],
+
+
+     extend: {
+      backgroundImage: {
+        'hola': "url('public/cv/hola.jpg')",
+      },
+  }
 };
